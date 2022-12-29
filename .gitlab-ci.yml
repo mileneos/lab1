@@ -1,0 +1,19 @@
+stages:
+  - deploy
+
+variables:
+  ARRAY1: "1,2,3,4,5"
+  ARRAY2: "6,7,8"
+  START_POS: "1"
+
+deploy-job: 
+  image: python:latest 
+  stage: deploy 
+
+
+  script:
+   - pip install numpy
+   - python lab1.py $ARRAY1 $ARRAY2 $START_POS > answer.txt
+  artifacts:
+    paths:
+      - answer.txt
